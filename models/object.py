@@ -6,6 +6,7 @@ from .base import Base
 
 if TYPE_CHECKING:
     from .order import Order
+    from .document import Document
 
 
 class Object(Base):
