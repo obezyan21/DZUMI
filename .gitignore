@@ -1,4 +1,12 @@
 venv/
 .env
+.idea
+*.sqlite3
+*.pyc 
+__pycache__/
+.vscode
+main.py
+.ssh/
+media/
 dzumienv/
 .idea
