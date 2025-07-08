@@ -5,7 +5,7 @@ from typing import TYPE_CHECKING
 from .base import Base
 
 if TYPE_CHECKING:
-    from .role import Role
+    from .user import User
 
 
 class Role(Base):
