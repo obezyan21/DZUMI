@@ -18,3 +18,4 @@ class Role(Base):
 
     # Связь 
     users: Mapped[list["User"]] = relationship(back_populates="role")
+    
