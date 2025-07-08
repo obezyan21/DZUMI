@@ -10,6 +10,7 @@ if TYPE_CHECKING:
 
 
 class Object(Base):
+    
     __tablename__ = "objects"
 
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
