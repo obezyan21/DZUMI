@@ -8,3 +8,5 @@ __pycache__/
 main.py
 .ssh/
 media/
+dzumienv/
+.idea
