@@ -2,4 +2,6 @@ from sqlalchemy.orm import DeclarativeBase, mapped_column
 from sqlalchemy import String
 from typing_extensions import Annotated
 
-# base
+
+class Base(DeclarativeBase):
+    pass
