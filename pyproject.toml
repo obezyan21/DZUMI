@@ -1,9 +1,9 @@
 [project]
-name="dzumi"
-version="0.1.0"
-authors=[
-    {name = ["googlehater", email = ""]},
-    {name = ["obezyan21", email = ""]}
+name = "dzumi"
+version = "0.1.0"
+authors = [
+    {name = "googlehater", email = "user1@example.com"},
+    {name = "obezyan21", email = "user2@example.com"}
 ]
 description = "dzumi aaaa"
 readme = "README.md"
