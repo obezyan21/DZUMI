@@ -6,4 +6,3 @@ from .base_dao import BaseDAO
 class Order(BaseDAO):
     def __init__(self, session):
         super().__init__(session, Order)
-

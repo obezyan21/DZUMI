@@ -10,14 +10,14 @@ from dao.trusted_suppliers_dao import TrustedSuppliersDao
 from dao.users_dao import UsersDao
 
 __all__ = [
-    'BaseDao',
-    'DocumentsDao',
-    'DocumetAttributesDao',
-    'IitemsDao',
-    'ObjectsDao',
-    'OrderItemsDao',
-    'OrdersDao',
-    'RolesDao',
-    'TrustedSuppliersDao',
-    'UsersDao',
+    "BaseDao",
+    "DocumentsDao",
+    "DocumetAttributesDao",
+    "IitemsDao",
+    "ObjectsDao",
+    "OrderItemsDao",
+    "OrdersDao",
+    "RolesDao",
+    "TrustedSuppliersDao",
+    "UsersDao",
 ]
