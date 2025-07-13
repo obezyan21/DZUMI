@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Session
-from models.documents import Document
+from models.document import Document
 from .base_dao import BaseDAO
 
 

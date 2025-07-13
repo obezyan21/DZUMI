@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Session
-from models.order_item import OrderItem
+from models.order_items import OrderItem
 from .base_dao import BaseDAO
 
 

@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Session
-from models.trusted_suppliier import TrustedSupplier
+from models.trusted_supplier import TrustedSupplier
 from .base_dao import BaseDAO
 
 
