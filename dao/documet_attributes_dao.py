@@ -3,6 +3,6 @@ from models.document_attribute import DocumentAttribute
 from .base_dao import BaseDAO
 
 
-class DocumentAttribute(BaseDAO):
+class DocumentAttributeDAO(BaseDAO):
     def __init__(self, session):
         super().__init__(session, DocumentAttribute)

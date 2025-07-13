@@ -3,6 +3,6 @@ from models.object import Object
 from .base_dao import BaseDAO
 
 
-class Object(BaseDAO):
+class ObjectDAO(BaseDAO):
     def __init__(self, session):
         super().__init__(session, Object)

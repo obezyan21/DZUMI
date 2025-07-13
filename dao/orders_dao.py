@@ -3,7 +3,7 @@ from models.order import Order
 from .base_dao import BaseDAO
 
 
-class Order(BaseDAO):
+class OrderDAO(BaseDAO):
     def __init__(self, session):
         super().__init__(session, Order)
 
