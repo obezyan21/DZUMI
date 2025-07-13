@@ -7,7 +7,7 @@ from .base import Base
 if TYPE_CHECKING:
     from .document import Document
 
-class DocumentAttributes(Base):
+class DocumentAttribute(Base):
     
     __tablename__ = "document_attributes"
 
@@ -19,4 +19,4 @@ class DocumentAttributes(Base):
     file_type: Mapped[Optional[str]] = mapped_column(String(50))
 
     # Связи
-    document: Mapped["Document"] = relationship(back_populates="attributes")
+    document: Mapped["Document"] = relationship(back_populates="attribute")

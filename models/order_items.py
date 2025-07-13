@@ -22,6 +22,6 @@ class OrderItem(Base):
     supplier_id: Mapped[int] = mapped_column(ForeignKey("trusted_supplier.id"))
 
     # Связи
-    order: Mapped["Order"] = relationship(back_populates="order_items")
-    item: Mapped["Item"] = relationship(back_populates="order_items")
-    supplier: Mapped["TrustedSupplier"] = relationship(back_populates="order_items")
+    order: Mapped["Order"] = relationship(back_populates="order_item")
+    item: Mapped["Item"] = relationship(back_populates="order_item")
+    supplier: Mapped["TrustedSupplier"] = relationship(back_populates="order_item")

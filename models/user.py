@@ -6,6 +6,7 @@ from .base import Base
 
 if TYPE_CHECKING:
     from .role import Role
+    from .order import Order
 
 
 class User(Base):
@@ -23,7 +24,7 @@ class User(Base):
 
     # связи
     role: Mapped[list["Role"]] = relationship(back_populates="users")
-
+    order: Mapped[list["Order"]] = relationship(back_populates="user")
 
     
     

@@ -21,4 +21,4 @@ class Item(Base):
 
     # Связи
     trusted_suppliers: Mapped[list["TrustedSupplier"]] = relationship(back_populates="item")
-    order_items: Mapped[list["OrderItem"]] = relationship(back_populates="item")
+    order_item: Mapped[list["OrderItem"]] = relationship(back_populates="item")

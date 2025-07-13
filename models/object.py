@@ -22,5 +22,6 @@ class Object(Base):
     email: Mapped[str] = mapped_column(String(50))
     is_active: Mapped[bool] = mapped_column(Boolean)
 
-    order: Mapped[list["Order"]] = relationship(back_populates="objects")
-    document: Mapped[list["Document"]] = relationship(back_populates="objects")
+    order: Mapped[list["Order"]] = relationship(back_populates="object")
+    document: Mapped[list["Document"]] = relationship(back_populates="object")
+    
