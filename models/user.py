@@ -24,7 +24,7 @@ class User(Base):
 
     # связи
     role: Mapped[list["Role"]] = relationship(back_populates="users")
-    order: Mapped[list["Order"]] = relationship(back_populates="user")
+    orders: Mapped[list["Order"]] = relationship(back_populates="user")
 
     
     

@@ -17,8 +17,8 @@ class Order(Base):
 
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
     object_id: Mapped[int] = mapped_column(ForeignKey('objects.id', ondelete="CASCADE"))
-    user_id: Mapped[int] = mapped_column(ForeignKey('user.id', ondelete="CASCADE"))
-    system_type: Mapped[str] = mapped_column(String(70))  # enum
+    user_id: Mapped[int] = mapped_column(ForeignKey('users.id', ondelete="CASCADE"))
+    system_type_id: Mapped[str] = mapped_column(String(70))  # enum
     order_status: Mapped[str] = mapped_column(String(50))  # enum
     total_price: Mapped[float] = mapped_column(Numeric(10, 2))
     agreed: Mapped[str] = mapped_column(String(50))
@@ -29,6 +29,6 @@ class Order(Base):
 
     # связи
     document: Mapped[list["Document"]] = relationship(back_populates="order")
-    object: Mapped["Object"] = relationship(back_populates="order")
-    user: Mapped["User"] = relationship(back_populates="order")
+    object: Mapped["Object"] = relationship(back_populates="orders")
+    user: Mapped["User"] = relationship(back_populates="orders")
     order_item: Mapped[list["OrderItem"]] = relationship(back_populates="order")

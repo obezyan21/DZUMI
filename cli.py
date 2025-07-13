@@ -4,23 +4,28 @@ from config import session
 
 
 
-def show_orders():
-
+def show_orders(session: Session):
+    
     order_dao = OrderDAO(session)
     orders = order_dao.get_all()
 
+    if not orders:
+        print("\nЕщё нет заказов для отображения")
+        return
+
     for order in orders:
+        print('------------------------')
         print(f'\nID: {order.id}')
-        print(f'\nObject: {order.object.name}')
-        print(f'\nUser: {order.user.last_name, order.user.first_name, order.user.middle_name}')
-        print(f'\nSystem Type: {order.system_type}')
-        print(f'\nStatus: {order.order_status}')
-        print(f'\nTotal price: {order.total_price}')
-        print(f'\nAgreed?: {order.agreed}')
-        print(f'\nPriority: {order.priority}')
-        print(f'\nDescription: {order.description}')
-        print(f'\nComment: {order.comment}')
-        print(f'\nDecline_reason: {order.decline_reason}')
+        print(f'Object: {order.object.name}')
+        print(f'User: {order.user.last_name, order.user.first_name, order.user.middle_name}')
+        print(f'System Type: {order.system_type_id}')
+        print(f'Status: {order.order_status}')
+        print(f'Total price: {order.total_price}')
+        print(f'Agreed?: {order.agreed}')
+        print(f'Priority: {order.priority}')
+        print(f'Description: {order.description}')
+        print(f'Comment: {order.comment}')
+        print(f'Decline_reason: {order.decline_reason}')
         print('------------------------')
 
 
@@ -44,7 +49,7 @@ def manage_orders():
         elif choice == "4":
             pass
         elif choice == "5":
-            show_orders()
+            show_orders(session)
         elif choice == "0":
             break 
 
@@ -66,26 +71,30 @@ def add_smth():
 
 
 def main_menu():
-    try:
-        while True:
-            print("\n===Главное меню===")
-            print("1. Управление заявками")
-            print("2. Оплатить заявку")
-            print("3. Добавить...")
-            print("0. Выход\n")
+    with Session() as session:
+        try:
+            while True:
+                print("\n===Главное меню===")
+                print("1. Управление заявками")
+                print("2. Оплатить заявку")
+                print("3. Добавить...")
+                print("0. Выход\n")
 
-            choice = input("Выберите: ")
+                choice = input("Выберите: ")
 
-            if choice == "1":
-                manage_orders()
-            elif choice == "2":
-                pay_order()
-            elif choice == "3":
-                add_smth()
-            elif choice == "0":
-                break
-            
-    finally:
-        print('\nthe session is over')
+                if choice == "1":
+                    manage_orders()
+                elif choice == "2":
+                    pay_order()
+                elif choice == "3":
+                    add_smth()
+                elif choice == "0":
+                    break
+                
+        except Exception as e:
+            print(f"Произоша ошибка: {e}")
+
+        finally:
+            print('\nthe session is over')
 
 main_menu()
