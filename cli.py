@@ -32,12 +32,12 @@ def show_orders(session: Session):
 def manage_orders():
 
     while True:
-        print("\n1. Change order status")
-        print("2. Create order")
-        print("3. Edit order")
-        print("4. Delete order")
-        print("5. Show orders")
-        print("0. Back to main menu")
+        print("\n1. Поменять статус заявки")
+        print("2. Создать заявку")
+        print("3. Редактировать заявку")
+        print("4. Удалить заявку")
+        print("5. Показать заявки")
+        print("0. Вернуться в главное меню")
 
         choice = input("Выберите: ")
         if choice == "1":
