@@ -7,7 +7,6 @@ class OrderDAO(BaseDAO):
     def __init__(self, session):
         super().__init__(session, Order)
 
-
     def get_by_priority(self, priority):
         return self.session.query(Order).filter(Order.priority == priority).all() # self.session.query(Order)
                                                                                   # self.session - это сессия SQLAlchemy, подключение к БД
@@ -21,3 +20,12 @@ class OrderDAO(BaseDAO):
 
     def get_by_date(self, date):
         pass
+
+    def save(self, request):
+        pass
+
+    def update_status(self, request, new_status):
+        '''Меняем статус через модель'''
+        request.change_status(new_status)  # change_status - вызываем у модели Order
+        self.save(request)
+    

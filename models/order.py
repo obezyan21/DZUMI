@@ -1,6 +1,8 @@
 from sqlalchemy import String, ForeignKey, Text, Integer, Boolean, Numeric
 from sqlalchemy.orm import Mapped, mapped_column, relationship
+from enum import Enum, unique 
 from typing import TYPE_CHECKING
+
 
 from .base import Base
 
@@ -32,3 +34,40 @@ class Order(Base):
     object: Mapped["Object"] = relationship(back_populates="orders")
     user: Mapped["User"] = relationship(back_populates="orders")
     order_item: Mapped[list["OrderItem"]] = relationship(back_populates="order")
+    
+
+    def change_status(self, new_status):
+        if self.order_status.can_transition(new_status):
+            self.order_status = new_status
+        else:
+            raise ValueError(f"Нельзя перейти из {self.order_status} в {new_status}")
+
+
+@unique
+class OrderStatusEnum(Enum):
+
+    NEW = "NEW"
+    UNDER_APPROVAL = "UNDER_APPROVAL"
+    IN_PROGRESS = "IN_PROGRESS"
+    DONE = "DONE"
+    CANCELED = "CANCELED"
+
+    # Куда может перейти состояние
+    transitions = {
+        NEW: [UNDER_APPROVAL, CANCELED],
+        UNDER_APPROVAL: [IN_PROGRESS, CANCELED],
+        IN_PROGRESS: [DONE, CANCELED],
+        DONE: [],
+        CANCELED: [] 
+    }
+    
+    def can_transition(self, new_status):
+        return new_status in self.transitions[self]
+
+    @classmethod
+    def describe_dictionary(self):
+        yield self.NEW, "Новая"
+        yield self.UNDER_APPROVAL, "На согласовании"
+        yield self.IN_PROGRESS, "В работе"
+        yield self.DONE, "Выполнено"
+        yield self.CANCELED, "Отменено"
