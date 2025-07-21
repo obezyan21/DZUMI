@@ -1,6 +1,7 @@
 from sqlalchemy.orm import Session
 from models.order import Order
 from .base_dao import BaseDAO
+from sqlalchemy import select
 
 
 class OrderDAO(BaseDAO):
@@ -21,7 +22,10 @@ class OrderDAO(BaseDAO):
     def get_by_date(self, date):
         pass
 
-    # def get_all(self, skip: int, limit: int):  пагинация
+    # def get_all(self, skip: int, limit: int):  # пагинация
+    #     query = select(Order).offset(skip).limit(limit)
+    #     result = self.ession.execute(query)
+    #     return result.scalars().all()
 
     def save(self, request):
         pass

@@ -5,28 +5,31 @@ from config import session
 
 
 def show_orders(session: Session):
-    
     order_dao = OrderDAO(session)
-    orders = order_dao.get_all()
 
-    if not orders:
-        print("\nЕщё нет заказов для отображения")
-        return
+    try: 
+        orders = order_dao.get_all(skip=2, limit=4)
+ 
+        if not orders:
+            print("\nЕщё нет заказов для отображения")
+            return
 
-    for order in orders:
-        print('------------------------')
-        print(f'\nID: {order.id}')
-        print(f'Object: {order.object.name}')
-        print(f'User: {order.user.last_name, order.user.first_name, order.user.middle_name}')
-        print(f'System Type: {order.system_type_id}')
-        print(f'Status: {order.order_status}')
-        print(f'Total price: {order.total_price}')
-        print(f'Agreed?: {order.agreed}')
-        print(f'Priority: {order.priority}')
-        print(f'Description: {order.description}')
-        print(f'Comment: {order.comment}')
-        print(f'Decline_reason: {order.decline_reason}')
-        print('------------------------')
+        for order in orders:
+            print('\n------------------------')
+            print(f'ID: {order.id}')
+            print(f'Object: {order.object.name}')
+            print(f'User: {order.user.last_name, order.user.first_name, order.user.middle_name}')
+            print(f'System Type: {order.system_type_id}')
+            print(f'Status: {order.order_status}')
+            print(f'Total price: {order.total_price}')
+            print(f'Agreed?: {order.agreed}')
+            print(f'Priority: {order.priority}')
+            print(f'Description: {order.description}')
+            print(f'Comment: {order.comment}')
+            print(f'Decline_reason: {order.decline_reason}')
+            print('------------------------')
+    except Exception as e:
+        print(f"\nПроизошла ошибка при получении заказов: {e}")
 
 
 def manage_orders():

@@ -19,3 +19,7 @@ class OrderService:
 
         # тут же вызвать из дао 
         pass
+
+    async def get_all_orders(self, skip: int, limit: int):  
+        '''Пагинация'''
+        return await self.order_dao.get_all(skip=skip, limit=limit)

@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Session
-
+from sqlalchemy import select
 
 class BaseDAO:
 
@@ -18,8 +18,12 @@ class BaseDAO:
 
         return obj
 
-    def get_all(self):  # пагинация
-        return self.session.query(self.model).all()
+    def get_all(self, skip: int, limit: int):  # пагинация
+        query = select(self.model).offset(skip).limit(limit)
+        result = self.session.execute(query)
+
+        return result.scalars().all()
+        # return self.session.query(self.model).all()
 
     def get_by_id(self, id: int):
         return self.session.get(self.model, id)
