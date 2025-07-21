@@ -9,5 +9,13 @@ class OrderService:
         self.order_dao = order_dao
         self.user_dao = user_dao
     
-    def create_new_order(self, order_dto: OrderCreateDto):
+    async def create_new_order(self, order_dto: OrderCreateDto):
+        '''Создает заявку с проверкой пользователя'''
+        user = await self.user_dao.get_by_id(order_dto.user_id)
+        if not user:
+            raise ValueError("Пользователь не найден")
+        
+        order_data = self.order_dao.model_dump()
+
+        # тут же вызвать из дао 
         pass

@@ -21,6 +21,8 @@ class OrderDAO(BaseDAO):
     def get_by_date(self, date):
         pass
 
+    # def get_all(self, skip: int, limit: int):  пагинация
+
     def save(self, request):
         pass
 
@@ -28,4 +30,3 @@ class OrderDAO(BaseDAO):
         '''Меняем статус через модель'''
         request.change_status(new_status)  # change_status - вызываем у модели Order
         self.save(request)
-    

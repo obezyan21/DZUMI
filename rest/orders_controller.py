@@ -8,11 +8,9 @@ app = FastAPI()
 class OrderCreateDto(BaseModel): # описывает какие данные ожидаются в теле запроса
     object_id: int
     system_type_id: int
-    order_status: str
-    total_price: float
-    priority: str
     description: str
     comment: str
+    decline_reason: str
 
 @app.post('') # декоратор, обработчик пост запросов, в скобках потом эндпоинт юрлку вставим 
 async def create_order(orders_dto: OrderCreateDto,
