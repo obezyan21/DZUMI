@@ -18,7 +18,7 @@ class BaseDAO:
 
         return obj
 
-    def get_all(self):
+    def get_all(self):  # пагинация
         return self.session.query(self.model).all()
 
     def get_by_id(self, id: int):
@@ -40,3 +40,5 @@ class BaseDAO:
             self.session.commit()
             return True
         return False
+    
+    # def save(self, model):

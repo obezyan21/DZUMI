@@ -36,7 +36,7 @@ class Order(Base):
     order_item: Mapped[list["OrderItem"]] = relationship(back_populates="order")
     
 
-    def change_status(self, new_status):
+    def change_status(self, new_status):  # в дао
         if self.order_status.can_transition(new_status):
             self.order_status = new_status
         else:
