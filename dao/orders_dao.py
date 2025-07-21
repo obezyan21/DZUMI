@@ -2,6 +2,7 @@ from sqlalchemy.orm import Session
 from models.order import Order
 from .base_dao import BaseDAO
 from sqlalchemy import select
+from typing import List
 
 
 class OrderDAO(BaseDAO):
@@ -34,3 +35,12 @@ class OrderDAO(BaseDAO):
         '''Меняем статус через модель'''
         request.change_status(new_status)  # change_status - вызываем у модели Order
         self.save(request)
+
+    def get_by_user(self, user: int) -> List[Order]:
+        '''Получение заявок по пользователю'''
+        query = select(Order).where(Order.user_id == user)
+        result = self.session.execute(query)
+
+        return result.scalars().all()
+    
+    
