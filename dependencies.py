@@ -3,7 +3,7 @@ from services.orders_service import OrderService
 from dao.orders_dao import OrderDAO
 from dao.users_dao import UserDAO
 
-# тут мы пишем функции для Dependes чтобы не явно/не строго передавать зависимости
+# тут мы пишем функции для Depends чтобы не явно/не строго передавать зависимости
 # упрощает тесты
 
 def get_order_dao():

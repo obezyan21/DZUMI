@@ -2,16 +2,17 @@ from fastapi import FastAPI, HTTPException, Depends, Query
 from pydantic import BaseModel
 from services.orders_service import OrderService
 from dependencies import get_order_service
-from typing import List
+from typing import List, Optional
 
 app = FastAPI()
 
 class OrderCreateDto(BaseModel): # описывает какие данные ожидаются в теле запроса
+    user_id: int
     object_id: int
     system_type_id: int
     description: str
-    comment: str
-    decline_reason: str
+    comment: Optional[str] = None
+    decline_reason: Optional[str] = None
 
 
 class OrderResponceDto(BaseModel):  # дто для ответа
