@@ -2,7 +2,7 @@ from sqlalchemy.orm import Session
 from models.order import Order
 from .base_dao import BaseDAO
 from sqlalchemy import select
-from typing import List
+from typing import List, Optional
 
 
 class OrderDAO(BaseDAO):
@@ -43,4 +43,10 @@ class OrderDAO(BaseDAO):
 
         return result.scalars().all()
     
+    def get_by_id(self, order_id: int) -> Optional[Order]:
+        '''Получает заявку по ID'''
+        query = select(Order).where(Order.id == order_id)
+        result = self.session.execute(query)
+
+        return result.scalars().first()
     
