@@ -15,11 +15,17 @@ class OrderService:
         if not user:
             raise ValueError("Пользователь не найден")
         
-        order_data = self.order_dao.model_dump()
+        order_data = order_dto.model_dump()
+        new_order = await self.order_dao.create(order_data)
 
-        # тут же вызвать из дао 
-        pass
+        return new_order
 
     async def get_all_orders(self, skip: int, limit: int):  
         '''Пагинация'''
         return await self.order_dao.get_all(skip=skip, limit=limit)
+    
+    async def accept_order(self, ):
+        pass
+
+    async def decline_order(self, ):
+        pass
