@@ -1,5 +1,5 @@
 from fastapi import Depends
-from rest.user_controller import UserDto
+from rest.user_controller import UserDto, ChangeFirstNameDto,ChangeRoleDto
 from dao.users_dao import UserDAO
 import dependencies
 
@@ -11,8 +11,8 @@ class UserService:
         new_user = user_dao.create(user_dto)
         return new_user
     
-    async def change_first_name(user_dto: UserDto, user_dao: UserDAO):
-        new_first_name = user_dao.update(user_dto.first_name)
+    async def change_first_name(change_role_dto: ChangeFirstNameDto, user_dao: UserDAO):
+        new_first_name = user_dao.update(change_role_dto.new_first_name)
         return new_first_name
     
     async def change_phone_number(user_dto: UserDto, user_dao: UserDAO):
@@ -23,8 +23,6 @@ class UserService:
         new_email = user_dao.update(user_dto.email)
         return new_email
     
-    async def change_role(user_dto: UserDto, user_dao: UserDAO): # тут поправть условие и я чет туплю как допилить ха-ха!
-        if user_dto.role_id != "Начальник":
+    async def change_role(change_role_dto: ChangeRoleDto, user_dao: UserDAO): # тут поправть условие на то как макс говорил
+        if  != "Начальник":
             raise ValueError("Недостаточно прав")
-        
-        pass
