@@ -12,5 +12,5 @@ class DocumentService:
         self.user_dao = user_dao
     
     async def load_new_document(self, document_dto: DocumentDTO):
-        new_document = self.documents_dao.create(document_dto)
+        new_document = await self.documents_dao.create(document_dto)
         return new_document

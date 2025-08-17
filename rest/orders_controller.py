@@ -6,6 +6,8 @@ from typing import List, Optional
 
 app = FastAPI()
 
+# дто может быть ДОХУЯ
+
 class OrderCreateDto(BaseModel): # описывает какие данные ожидаются в теле запроса
     user_id: int
     object_id: int
@@ -43,3 +45,6 @@ async def get_orders(
     order_service: OrderService = Depends(get_order_service)
 ):
     return await order_service.get_all_orders(skip=skip, limit=limit)
+
+# тут дописать функции
+# редактировать еще чет придумать
